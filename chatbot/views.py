@@ -1,7 +1,3 @@
-# chatbot/views.py
-
-from django.shortcuts import render
-from django.views import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from dotenv import load_dotenv
@@ -10,6 +6,7 @@ import os
 from .models import Conversation
 from .serializers import ConversationSerializer
 from rest_framework.permissions import IsAuthenticated
+from .throttles import ChatBotThrottle
 
 load_dotenv()
 client = OpenAI(
@@ -18,6 +15,7 @@ client = OpenAI(
 
 class ChatBotView(APIView):
     permission_classes = [IsAuthenticated]
+    throttle_classes = [ChatBotThrottle]
     serializer_class = ConversationSerializer
     
     def get_queryset(self):

@@ -60,14 +60,9 @@ class LoginSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['username', 'password']
+        fields = ['username', 'password', 'email']
 
-    def validate(self, data):
-        user = authenticate(**data)
-        if user:
-            token = Token.objects.get(user=user)
-            return {'token': token, 'username': user.username, 'email': user.email}
-        raise serializers.ValidationError("유효하지 않은 로그인입니다.")    
+
 
 
     

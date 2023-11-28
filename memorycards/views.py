@@ -14,7 +14,6 @@ class MemoryCardViewSet(ModelViewSet):
     로그인한 사용자만 READ(GET), CREATE(POST) 가능 IsAuthenticated
     작성자 본인일 경우에만 UPDATE(PUT), DELETE(DELETE) 가능 IsAuthorOrReadOnly
     '''
-        
     queryset = MemoryCard.objects.all()
     serializer_class = MemoryCardSerializer
     
