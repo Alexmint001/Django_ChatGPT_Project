@@ -142,48 +142,45 @@
 
 ## 4. 데이터베이스 모델링(ERD)
 <div align="center">
-<img width="800" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/b917ce43-29f9-4bf9-8b2b-59663872d1c9"><br>
-- 기능 요구사항(마인드맵) - <br>
+<img width="800" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/2f014b9d-841d-4e58-b91b-6e17167a2768"><br>
+    - 기능 요구사항(마인드맵) - <br>
 <br>
 
-<img width="800" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/9a2b6f7c-64c0-441b-8097-ad64f04b4a25"><br>
-- 데이터베이스 모델링(ERD 설계)<br>
-<a href="https://velog.io/@alexan1027/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%AA%A8%EB%8D%B8%EB%A7%81-%EA%B0%9C%EB%85%90-%EB%B0%8F-ERD-%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8-%EC%8A%A4%ED%84%B0%EB%94%94">ERD 블로그 정리</a>
+<img width="800" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/ecde53ea-9f7f-48d8-b971-1eaf0f3cfa32"><br>
+    - 데이터베이스 모델링(ERD 설계) - <br>
+<br>
 </div>
 
 ## 5. UI
 ### 5-1. 와이어프레임
-- [Mockup 테스트 페이지](https://ovenapp.io/view/RLB4pSeIPvYpCHhRChBNKNLbPwiuccir/6psTJ)    
-
-|||
-|-|-|
-|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/d9d0cdc3-cb80-41a0-9b02-f7e224d5a346">01_메인페이지 - 로그인 전|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/41c2559b-d4c6-41f2-a4e6-c27f4c676c57">02_회원가입 페이지|
-|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/9ee28c98-44b2-4f2d-ac42-e3de627b50a0">03_프로필 페이지|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/71b47345-72b3-479c-b75e-e7970d8739d9">04_메인페이지 - 로그인 후|
-|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/b97dfc1d-8c68-42c2-978e-1855e4439b8e">05_카테고리 별 페이지|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/cdd3b93c-c6c1-41fe-8b73-391f78ded4ec">06_콘텐츠 별 페이지|
-|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/8489a293-75ad-4d96-a700-6a447a6ddc3c">07_댓글 작성 시 페이지|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/47bd4c0a-a2dc-477b-b8ec-033e5275c363">08_글 작성 시 페이지|
-|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/ad3e88e0-db38-4f1f-8024-1a9090772640">08_글 수정 시 페이지||
+<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/28160bd1-efb4-410a-85fa-7fdc03ed2c81">
 
 ### 5-2. 실제 UI
 
 |||
 |-|-|
-|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/d791421b-ee8a-4f3c-a77f-48dec984869a">01_메인페이지 - 로그인 전|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/f8c368ae-1aa2-4027-907d-1de0a5d02088">02_회원가입 페이지|
-|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/66ad9ddd-5daf-4357-9cb9-ba66647e9fc0">03_프로필 페이지|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/7491d809-41ea-49da-a831-475f012dae99">04_메인페이지 - 로그인 후|
-|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/740fc51f-78a0-400f-93f4-9d937b8b6456">05_블로그 입장|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/dd244027-c34e-4730-86d7-c1e7f00f8830">06_about페이지|
-|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/db446e43-2b46-4a45-afae-f1712b82c2b7">07_카테고리별페이지-1|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/93529fb7-b47e-487f-aeb5-034193b9b9bd">08_카테고리별페이지-2|
-|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/6949b66d-1269-4cb6-a462-861f07dd750f">09_태그별페이지|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/004eef28-0f1d-4cf7-8ed2-03ed72540763">10_콘텐츠별페이지|
-|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/e6b34e41-ebae-4135-9c28-5a5d18437882">11_댓글작성페이지|<img width="100%" alt="image" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/d6be06d0-fc00-4a8b-91bf-30ded70a47f0">12_대댓글작성페이지|
-|<img width="100%" alt="13_404Error페이지" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/780c2bd4-0bee-46f1-b2cf-b5661c7db2c5">13_404Error 페이지||
+|<img width="450px" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/75d7dd92-ea97-4c0d-ae51-f4781daec151"><br>01_로그인 페이지|<img width="450px" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/561a86f0-1541-4798-bab9-8a03ae4b513b"><br>02_회원가입 페이지|
+|<img width="450px" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/bb42a263-2771-4b94-b1c5-8bc1f8f15ce4"><br>03_프로필 페이지|<img width="450px" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/7f5c5705-46a1-44f8-9ecc-38711116e26b"><br>04_글 목록 페이지|
+|<img width="450px" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/4ebf0912-4f72-43b7-bca2-b4d9a3c1b2d6"><br>05_글 작성 페이지|<img width="450px" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/6a9bf372-81ca-4a6e-88cc-cf1d1f412780"><br>06_작성자가 아닌 사용자가 보는 페이지|
+|<img width="450px" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/d384c318-fb15-4ec6-8962-2bf9c024ea8d"><br>07_작성자인 사용자가 보는 페이지|<img width="450px" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/a6156475-a8e2-4d61-9a1f-741fa77da912"><br>08_글 수정 페이지|
+|<img width="450px" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/b75b0da3-c598-43ac-bd30-038684f36afe"><br>09_챗봇 페이지||
 
 ### 5-3. 기능 별 GIF
 
+<div align="center">
+    
 |||
 |-|-|
-|<img width="100%" alt="" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/3e30c1f3-48b3-4e0b-bc12-f49ea9ce5f8f">|메인페이지에서 회원가입 및 로그인을 하는 모습|
-|<img width="100%" alt="" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/b970c89a-8ae1-47cc-9fbf-b43a7ff3b372">|메인페이지에서 블로그 진입과 게시글 작성하는 모습, <br>상세글 페이지에서 댓글 작성, 수정, 대댓글, 삭제가 되는 모습|
-|<img width="100%" alt="" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/70e8938d-c6c9-4ed7-aaf1-c1a87e983249">|목록 페이지에서 게시글 수정 및 삭제가 되는 모습|
-|<img width="100%" alt="" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/922df739-2bff-4bb5-81c1-60ae93b1ccd1">|카테고리 및 태그 별로 게시글 확인이 가능하며, 카테고리 및 태그 별로 검색이 가능합니다.|
-|<img width="100%" alt="" src="https://github.com/Alexmint001/Django_Blog/assets/142385654/387408a6-2850-4652-82ee-143ba89e4f2b">|프로필 페이지에서 비밀번호 변경이 가능한 모습|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/5d677e35-17bf-4104-becf-5d7ef460842a">|회원가입 기능|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/8abcd43a-81aa-4f35-8673-02e10798e86c">|로그인 기능|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/27d1858e-4110-44e5-adc0-068a39daa169">|프로필 기능|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/98b2578f-919c-4895-adea-d3f2e7c11f8a">|로그아웃 기능|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/02282032-7522-4fa2-89a2-2704639a2ae7">|글 쓰기 및 글 읽기 기능 / CREATE, GET|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/10a991de-a814-4e74-a5fa-87d3423a3f0f">|글 수정 및 글 삭제 / PUT, DELETE|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/124f7d0c-99c5-4156-a52c-fcaa46b6475b">|챗봇 요청 및 답변 / POST, GET|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/8f454c96-39ac-4270-af24-499fde234831">|챗봇 요청 횟수 초과|
+
+</div>
 
 ## 6. 메인 기능
 ### 블로그 CRUD 기능 구현
