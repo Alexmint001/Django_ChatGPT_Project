@@ -3,11 +3,13 @@ from rest_framework.authtoken.models import Token
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
 
 class RegisterSerializer(serializers.ModelSerializer):
     '''
     회원 가입 시리얼라이저
+    profile_image는 사용하지 않습니다.
+    username과 email은 회원가입시 필수로 입력이 필요하며 중복이 불가능합니다.
+    password와 password2는 같은 값이여야하며 필수로 입력되어야 합니다.
     '''
     profile_image = serializers.ImageField(
         required = False,
@@ -54,6 +56,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.ModelSerializer):
     '''
     로그인 시리얼라이저
+    username과 password를 입력받고 email 필드를 같이 직렬화합니다.
     '''
     username = serializers.CharField(required=True)
     password = serializers.CharField(write_only=True, required=True)

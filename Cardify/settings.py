@@ -11,6 +11,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
+# SECRETKEY 따로 분리해서 관리
 secret_file = os.path.join(BASE_DIR, 'secrets.json')
 
 with open(secret_file) as f:
@@ -149,18 +151,12 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
-    # 'DEFAULT_THROTTLE_CLASSES': [
-    #     'rest_framework.throttling.UserRateThrottle'  # 인증 요청의 제한시간
-    # ],
-    # 'DEFAULT_THROTTLE_RATES': {
-    #     'user': '5/day' # 인증 사용자의 요청 속도를 1일에 5건으로 제한
-    # }
 }
 
 SIMPLE_JWT = {
-	# Access 토큰 유효 시간 설정하기
+	# Access 토큰 유효 시간 30분으로 설정
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
-	# Refresh 토큰 유효 시간 설정하기
+	# Refresh 토큰 유효 시간  1일으로 설정
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 
     'ROTATE_REFRESH_TOKENS': False,

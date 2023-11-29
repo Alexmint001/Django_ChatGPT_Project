@@ -8,12 +8,19 @@ from .serializers import ConversationSerializer
 from rest_framework.permissions import IsAuthenticated
 from .throttles import ChatBotThrottle
 
+# OPEBAI_API_KEY 는 별도로 관리합니다.
 load_dotenv()
 client = OpenAI(
     api_key=os.environ['OPENAI_API_KEY'],  
 )
 
 class ChatBotView(APIView):
+    '''
+    ChatBotView입니다.
+    인증된 사용자만 사용이 가능하며 1일 5회 post요청이 가능합니다.
+    채팅을 DB에 저장하여 이전 채팅 내용이 확인 가능합니다.
+    채팅 내용 확인은 본인이 주고받은 내용만 확인이 가능합니다.
+    '''
     permission_classes = [IsAuthenticated]
     throttle_classes = [ChatBotThrottle]
     serializer_class = ConversationSerializer

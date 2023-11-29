@@ -2,6 +2,9 @@ from rest_framework.serializers import ModelSerializer, ReadOnlyField, Serialize
 from .models import MemoryCard
 
 class MemoryCardSerializer(ModelSerializer):
+    '''
+    author 필드를 사용할 때 값은 author의 username을 사용합니다.
+    '''
     author = ReadOnlyField(source='author.username')
     is_author = SerializerMethodField()
     

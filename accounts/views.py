@@ -1,16 +1,18 @@
 import jwt
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
 from .serializers import *
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, TokenRefreshSerializer
 from rest_framework.response import Response
 from rest_framework import generics, status
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from Cardify.settings import SECRET_KEY
 
 class RegisterView(generics.CreateAPIView):
+    '''
+    회원가입 뷰입니다.
+    회원가입시 jwt access 토큰과 refresh 토큰 발급
+    '''
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
 
@@ -18,7 +20,6 @@ class RegisterView(generics.CreateAPIView):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
-            
             # jwt 토큰 접근
             token = TokenObtainPairSerializer.get_token(user)
             refresh_token = str(token)
@@ -40,7 +41,10 @@ class RegisterView(generics.CreateAPIView):
 userregister = RegisterView.as_view()
 
 class LoginView(generics.GenericAPIView):
-
+    '''
+    로그인 뷰입니다.
+    로그인시 access 토큰과 refresh토큰을 발급받습니다.
+    '''
     def post(self, request):
         # 유저 인증
         user = authenticate(
@@ -71,7 +75,11 @@ class LoginView(generics.GenericAPIView):
 userlogin = LoginView.as_view()
 
 class ProfileView(generics.GenericAPIView):
-    
+    '''
+    프로필 뷰입니다.
+    HS256 알고리즘으로 access token을 decode해서 유저 식별하고, 
+    LoginSerializer의 데이터 ['username', 'password', 'email']을 리턴합니다.
+    '''
     def get(self, request):
         try:
             # access token을 decode 해서 유저 id 추출 => 유저 식별

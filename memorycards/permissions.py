@@ -5,7 +5,7 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
 
     def has_permission(self, request, view):
         '''
-        GET, HEAD, OPTIONS 요청은 인증 여부와 상관없이 항상 True를 리턴합니다.
+        GET, HEAD, OPTIONS 요청은 인증된 유저에게 True를 리턴합니다.
         '''
         if request.user.is_authenticated:
             return True
