@@ -12,6 +12,7 @@
 [6. 메인 기능](#6-메인-기능)<br>
 [7. 추가 기능](#7-추가-기능)<br>
 [8. 개발하며 경험한 오류와 해결방법](#8-개발하며-경험한-오류와-해결방법)<br>
+<br>
 
 ## 1. 목표와 기능
 ### 1.1 목표
@@ -20,6 +21,7 @@
 - 인증된 사용자는 암기 항목을 작성할 수 있습니다.
 - 암기 항목의 수정 및 삭제는 작성자만이 가능합니다.
 - 챗봇에게 궁금한 내용을 물어보고 답변을 받을 수 있습니다.
+<br>
 
 ## 2. 개발 환경
 
@@ -43,6 +45,7 @@
     <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=flat-square&logo=Visual Studio Code&logoColor=white"/>
     <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/>
 </div>
+<br>
 
 ## 3. 프로젝트 구조와 개발 일정
 
@@ -137,8 +140,9 @@
 <img width="800" alt="WBS" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/f3ba8b42-8ffd-43d5-90d3-7385e5396cff"><br>
 <img width="800" alt="WBS" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/61f956b3-5d98-4232-99b8-9bed5712bf37"><br>
 <img width="800" alt="WBS" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/f1510bb6-1b7b-4916-87ec-3ff1da2cd775"><br>
-<a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQbfMrsn7gFsPs00l8CcxiGUMpIx7_rD-jf7RDY5ekv6mSTFPnxom0IQa6QphAAhllef_RJMnMvh0Yq/pubhtml">WBS 스프레드시트</a>
+[WBS 스프레드시트](https://docs.google.com/spreadsheets/d/e/2PACX-1vQbfMrsn7gFsPs00l8CcxiGUMpIx7_rD-jf7RDY5ekv6mSTFPnxom0IQa6QphAAhllef_RJMnMvh0Yq/pubhtml)
 </div>
+<br>
 
 ## 4. 요구사항 시각화 및 데이터베이스 모델링(ERD)
 <div align="center">
@@ -153,12 +157,14 @@
     - 데이터베이스 모델링(ERD 설계) - <br>
 <br>
 </div>
+<br>
 
 ## 5. UI
 ### 5.1. 와이어프레임
 <img width="100%" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/28160bd1-efb4-410a-85fa-7fdc03ed2c81">
 
 ### 5.2. 실제 UI
+- GitHub Link : [Django_ChatGPT_Project_FE](https://github.com/Alexmint001/Django_ChatGPT_Project_FE)
 
 |||
 |-|-|
@@ -184,11 +190,25 @@
 |<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/8f454c96-39ac-4270-af24-499fde234831">|<div align="center">챗봇 요청 횟수 초과</div>|
 
 </div>
+<br>
 
 ## 6. 메인 기능
-### 6.1. DRF CRUD 기능 구현
+### 6.1. DRF 글 작성/읽기/수정/삭제 기능 구현
+- mermorycards
+    - `ModelViewSet`을 상속받는 `MemoryCardViewSet`을 작성하여 CRUD 구현
+    - 로그인한 사용자만 READ(GET), CREATE(POST) 가능하도록 `permission_classes`에 `IsAuthenticated` 설정
+    - 작성자 본인일 경우에만 UPDATE(PUT), DELETE(DELETE) 가능하도록 `permissions.py`에 `IsAuthorOrReadOnly` 작성 후 설정
+    - 소스 코드 링크 : [memorycards/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/views.py#L8C1-L28C23) / [memorycards/permissions.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/permissions.py#L4C1-L21C5) / [memorycards/serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/serializers.py#L4C1-L19C21)
 ### 6.2. DRF 로그인/회원가입 기능
+- accounts
+    - `GenericAPIView`를 상속받는 `LoginView`를 작성하여 로그인 구현 - POST
+    - `CreateAPIView`를 상속받는 `RegisterView`를 작성하여 회원가입 구현 - POST
+    - 소스 코드 링크 : [accounts/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/accounts/views.py#L11C1-L75C32) / [accounts/serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/accounts/serializers.py#L7C1-L66C51)
 ### 6.3. OpenAI API 연결하여 챗봇 구현
+- chatbot
+    - `APIView`를 상속받는 `ChatBotView`를 작성하여 챗봇 구현 - GET / POST
+    - 소스 코드 링크 : [chatbot/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/chatbot/views.py#L17C1-L60C64)
+<br>
 
 ## 7. 추가 기능
 ### 7.1. DRF CRUD는 Jason Web Token 방식으로 적용
@@ -200,23 +220,20 @@
 ### 7.3. 챗봇 추가 기능
 ### 7.3.1. 이전에 챗봇과 채팅한 내용은 본인만 확인 가능 - 채팅 내용 데이터 베이스 저장 + 채팅 사용자 본인(user field)
 ### 7.3.2. 챗봇에 요청할 수 있는 횟수는 1일 5회로 제한 - UserRateThrottle을 상속받아 ChatBotThrottle 구현
+<br>
 
 ## 8. 개발하며 경험한 오류와 해결방법
 ### 2023-11-23
 ### 8.1. 로그인 시 BackEnd 서버와 FrontEnd서버 연결 에러 (DRF 기본 토큰 방식)😲
-- 에러 : HTTP 403 Forbidden, CSRF Failed: Origin checking failed - http://127.0.0.1:5500 does not match any trusted origins.
-- 원인 : 토큰이 신뢰할 수 있는 위치랑 매치 되지 않아서 생기는 에러
-- 해결방법 : settings.py에 기본 인증 클래스를 TokenAuthentication으로 설정하였다
-    ```
-    # settings.py
-    REST_FRAMEWORK = {
-        'DEFAULT_AUTHENTICATION_CLASSES': [
-            'rest_framework.authentication.TokenAuthentication',
-        ],
-    }
-    ```
+- 에러
+    - `HTTP 403 Forbidden, CSRF Failed: Origin checking failed - http://127.0.0.1:5500 does not match any trusted origins.`
+- 원인
+    - 토큰이 신뢰할 수 있는 위치랑 매치 되지 않아서 생기는 에러
+- 해결방법
+    - `settings.py`에 기본 인증 클래스를 `TokenAuthentication`으로 설정하였다
+- 소스코드 링크 : [Cardify/Settings.py Link](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/Cardify/settings.py#L149C1-L154C2)
     <details>
-    <summary>django-rest-framework 소스 코드 authentication.TokenAuthentication 부분</summary>
+    <summary>참고한 django-rest-framework 소스 코드 authentication.TokenAuthentication 부분</summary>
     <div markdown="1">
     
     ```python
@@ -286,35 +303,28 @@
     
     </div>
     </details>
+<br>
 
 ### 2023-11-24
-### 8.2. 클라이언트의 작성 페이지에서 글 제목과 글 내용을 작성 후 로컬저장소의 토큰을 getitem으로 담아서 제출 요청, 자격이 없다, 400 에러가 발생😲
-- 에러 : 클라이언트의 작성 페이지에서 글 제목과 글 내용을 작성 후 로컬저장소의 토큰을 getitem으로 담아서 제출 요청, 자격이 없다, 400 에러가 발생
-- 원인 : author를 입력받아야 해당 글의 author를 지정하는데 클라이언트로 입력 받지 못하여 생긴 에러
-- 해결방법 : serializers.py에 author를 ReadOnlyField로 설정하였고, views.py에 CreateModelMixin의 perform_create를 오버라이딩 하여 기본적으로 request.user를 통해 자동적으로 설정되고. 이를 통해 author는 클라이언트로 부터 입력을 받지 않고, 서버에서만 수정이 가능하도록 하였다.
-    ```python
-    # serializers.py
-    ...생략...
-    class MemoryCardSerializer(ModelSerializer):
-
-    author = ReadOnlyField(source='author.username')
-    ...생략...
-    ```
-    ```python
-    # views.py
-    class MemoryCardViewSet(ModelViewSet):
-
-    ...생략...
-    serializer_class = MemoryCardSerializer
-    
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
-    ...생략...
-    ```
+### 8.2. 클라이언트의 작성 페이지에서 작성 요청, 자격이 없다, 400 에러가 발생😲
+- 에러
+    - 클라이언트의 작성 페이지에서 제목과 내용을 작성 후 로컬저장소의 토큰을 getitem으로 담아서 요청, 자격이 없다, 400 에러가 발생
+- 원인
+    - author를 입력받아야 해당 글의 author를 지정하는데 클라이언트로 입력 받지 못하여 생긴 에러
+- 해결방법
+    - `serializers.py`에 `author`를 `ReadOnlyField`로 설정하였고, `views.py`에 `CreateModelMixin`의 `perform_create`를 오버라이딩 하여 기본적으로 `request.user`를 통해 자동적으로 설정되고. 이를 통해 `author`는 클라이언트로 부터 입력을 받지 않고, 서버에서만 수정이 가능하도록 하였다.
+- 소스코드 링크 : [memorycards/Serializers.py Link](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/serializers.py#L4C1-L19C21) / [memorycards/Views.py Link](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/views.py#L8C1-L29C5)
 
 ### 2023-11-25
 ### 8.3. register(회원가입)에서 닉네임 추가 후 회원가입 시 발생한 에러😩
-- 에러 : FieldError at /accounts/register/, Cannot resolve keyword 'nickname' into field. Choices are: auth_token, carduser, date_joined, email, first_name, groups, id, is_active, is_staff, is_superuser, last_login, last_name, logentry, memorycard, password, user_permissions, username
-- 원인 : 기본 USER 모델에 nickname field가 없어서 발생한 오류
-- 해결방법 : User의 AbstractUser를 상속받아 커스텀 유저를 만들어서 해결해야함. User 모델을 건드려야 하므로 초기에 진행했어야 함.
-- 아쉬운 점 : 이미 어느 정도 프로젝트가 진행이 된 상태라 User 모델 커스텀 하기에는 부담이 되어 이 부분은 작업하지 못함.
+- 에러
+  - `FieldError at /accounts/register/, Cannot resolve keyword 'nickname' into field.<br>
+    Choices are: auth_token, carduser, date_joined, email, first_name, groups, id, is_active, is_staff, is_superuser,<br>
+    last_login, last_name, logentry, memorycard, password, user_permissions, username`
+- 원인
+  - 기본 `User Model`에 `nickname field`가 없어서 발생한 오류
+- 해결방법
+  - `User`의 `AbstractUser`를 상속받아 커스텀 유저를 만들어서 해결해야함. `User Model`을 건드려야 하므로 초기에 진행했어야 함.
+- 아쉬운 점
+  - 이미 어느 정도 프로젝트가 진행이 된 상태라 `User Model` 커스텀 하기에는 부담이 되어 이 부분은 작업하지 못함.<br>
+- 소스코드 링크 : [accounts/Models.py Link](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/accounts/models.py#L4C1-L15C47)
