@@ -154,7 +154,7 @@
 </div>
 <br>
 
-## 4. 요구사항 시각화 및 데이터베이스 모델링(ERD)
+## 4. 요구사항 시각화, 데이터베이스 모델링(ERD), 배포 아키텍처 구성도
 <div align="center">
 <img width="800" alt="MindMap" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/2f014b9d-841d-4e58-b91b-6e17167a2768"><br>
     - 기능 요구사항(마인드맵) - <br>
@@ -162,9 +162,14 @@
 
 <img width="800" alt="FlowChart" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/a18f572f-5656-4152-805c-2cd1f8630b0d"><br>
     - 플로우 차트 - <br>
+<br>
 
 <img width="800" alt="ERD" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/ecde53ea-9f7f-48d8-b971-1eaf0f3cfa32"><br>
     - 데이터베이스 모델링(ERD 설계) - <br>
+<br>
+
+<img width="800" alt="architecture" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/1e989e6a-2566-488e-a213-ba35ad8a708b"><br>
+    - 배포 아키텍처 구성도 - <br>
 <br>
 </div>
 <br>
@@ -244,7 +249,7 @@
 ### 7.2.2. DRF 회원가입
 - accounts
     - 회원가입은 POST 요청이므로 `CreateAPIView`를 상속받는 `RegisterView`를 작성하고, post 메서드를 오버라이딩, 회원 가입 후 access token과 refresh token을 리턴
-    - 회원가입 시 username과 email은 필수로 입력이 필요하고, 중복이 불가능 하다라는 설정과 password1과 password2는 같아야하고 필수로 입력이 필요하다는 설정은 `serializers.py`에서 `required`와 `valudators`를 설정하였습니다.
+    - 회원가입 시 username과 email은 필수로 입력이 필요하고, 중복이 불가능 하다라는 설정과 password1과 password2는 같아야하고 필수로 입력이 필요하다는 설정은 `serializers.py`에서 `required`와 `validators`를 설정하였습니다.
     - 소스 코드 링크 : [accounts/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/accounts/views.py#L11C1-L41C38) / [accounts/serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/accounts/serializers.py#L7C1-L35C6)
 
 ### 7.3. 챗봇 추가 기능
