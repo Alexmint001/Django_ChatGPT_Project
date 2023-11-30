@@ -212,14 +212,43 @@
 
 ## 7. 추가 기능
 ### 7.1. DRF CRUD는 Jason Web Token 방식으로 적용
-### 7.1.1. CREATE - 인증된 사용자 (ACCESS TOKEN)
-### 7.1.2. READ - 인증된 사용자 (ACCESS TOKEN)
-### 7.1.3. UPDATE - 인증된 사용자 (ACCESS TOKEN) + 작성자 본인 (author field)
-### 7.1.4. DELETE - 인증된 사용자 (ACCESS TOKEN) + 작성자 본인 (author field)
+### 7.1.1. CREATE, READ - 인증된 사용자 (ACCESS TOKEN)
+- memorycards
+    - `Settings.py`의 `REST_FRAMEWORK` 의 `DEFAULT_AUTHENTICATION_CLASSES` 설정을 `rest_framework_simplejwt.authentication.JWTAuthentication`으로 설정하여 JWT 사용
+    - `ModelViewSet`을 상속받는 `MemoryCardViewSet`의 `permission_classes`를 통해 인증된 사용자를 검증할 수 있습니다.
+    - 소스 코드 링크 : [Cardify/settings.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/Cardify/settings.py#L150C1-L154C2) / [memorycards/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/memorycards/views.py#L8C1-L27C11)
+
+### 7.1.2. UPDATE, DELETE - 인증된 사용자 (ACCESS TOKEN) + 작성자 본인 (author field)
+- memorycards
+    - `Settings.py`의 `REST_FRAMEWORK` 의 `DEFAULT_AUTHENTICATION_CLASSES` 설정을 `rest_framework_simplejwt.authentication.JWTAuthentication`으로 설정하여 JWT 사용
+    - `ModelViewSet`을 상속받는 `MemoryCardViewSet`의 `permission_classes`를 통해 인증된 사용자를 검증할 수 있습니다.
+    - `serializers.py`에서 `get_is_author` 메서드를 오버라이딩 하여 작성자 본인일 경우 True를 리턴합니다.
+    - `permissions.py` 에서 GET 요청은 인증 여부와 상관없이 항상 True를 리턴하되 그 외 요청(PUT, DELETE)에 대해서는 작성자에게만 True를 리턴하도록 `has_object_permission` 메서드 오버라이딩
+    - 소스 코드 링크 : [memorycards/serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/memorycards/serializers.py#L15C1-L19C21) / [memorycards/permissions.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/memorycards/permissions.py#L13C2-L20C42)
+
 ### 7.2. DRF 로그인, 회원가입 시 Jason Web Token 발급
+### 7.2.1. DRF 로그인
+- accounts
+    - 로그인은 POST 요청이므로 `GenericAPIView`를 상속받는 `LoginView`를 작성하고, post 메서드를 오버라이딩, 사용자 인증 후 access token과 refresh token을 리턴
+    - 소스 코드 링크 : [accounts/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/accounts/views.py#L43C1-L75C32)
+### 7.2.2. DRF 회원가입
+- accounts
+    - 회원가입은 POST 요청이므로 `CreateAPIView`를 상속받는 `RegisterView`를 작성하고, post 메서드를 오버라이딩, 회원 가입 후 access token과 refresh token을 리턴
+    - 회원가입 시 username과 email은 필수로 입력이 필요하고, 중복이 불가능 하다라는 설정과 password1과 password2는 같아야하고 필수로 입력이 필요하다는 설정은 `serializers.py`에서 `required`와 `valudators`를 설정하였습니다.
+    - 소스 코드 링크 : [accounts/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/accounts/views.py#L11C1-L41C38) / [accounts/serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/accounts/serializers.py#L7C1-L35C6)
+
 ### 7.3. 챗봇 추가 기능
 ### 7.3.1. 이전에 챗봇과 채팅한 내용은 본인만 확인 가능 - 채팅 내용 데이터 베이스 저장 + 채팅 사용자 본인(user field)
+- chatbot
+    - 채팅 내용 본인만 확인 기능은 `APIView`를 상속받는 `ChatBotView`에서 `get_queryset` 메서드에서 요청한 사용자를 확인하고, 해당 사용자의 채팅을 가져오는 get 메서드를 오버라이딩하여 구현하였습니다.
+    - 채팅 내용 DB 저장 기능은 post메서드를 오버라이딩하여 사용자를 지정한 후 저장하도록 구현하였습니다.
+    - 소스 코드 링크 : [chatbot/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/chatbot/views.py#L28C5-L58C61)
 ### 7.3.2. 챗봇에 요청할 수 있는 횟수는 1일 5회로 제한 - UserRateThrottle을 상속받아 ChatBotThrottle 구현
+- chatbot
+    - 요청 횟수 제한 기능은 `throttles.py`에서 `UserRateThrottle`을 상속받는 `ChatBotThrottle`에서 `rate`를 `5/day`로 설정 후 `allow_request` 메서드를 오버라이딩하여 post요청에 한해서만 적용하도록 설정하였습니다.
+    - `views.py`에서 `throttles_classes`를 작성한 `ChatBotThrottle`로 설정
+    - `throttles`를 따로 작성한 이유 : `settings.py`에서 `DEFAULT_THROTTLE_RATES`로 설정을 하면 모든 요청에 횟수 제한을 두게 되므로 단순히 이전 내용을 읽어오는 get요청도 포함되기 때문.
+    - 소스 코드 링크 : [chatbot/throttles.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/chatbot/throttles.py#L3C1-L13C5) / [chatbot/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/chatbot/views.py#L25C4-L25C41)
 <br>
 
 ## 8. 개발하며 경험한 오류와 해결방법
@@ -232,77 +261,77 @@
 - 해결방법
     - `settings.py`에 기본 인증 클래스를 `TokenAuthentication`으로 설정하였다
 - 소스코드 링크 : [Cardify/Settings.py Link](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/Cardify/settings.py#L149C1-L154C2)
-    <details>
-    <summary>참고한 django-rest-framework 소스 코드 authentication.TokenAuthentication 부분</summary>
-    <div markdown="1">
-    
-    ```python
-    ...생략...
-    
-    class TokenAuthentication(BaseAuthentication):
-        """
-        간단한 토큰 기반 인증입니다.
-        클라이언트는 "Authorization"에서 토큰 키를 전달하여 인증해야 합니다
-        문자열 "Token"으로 앞에 붙는 HTTP 헤더입니다. 
-        예를 들어: Authorization: Token {token}
-        """
-    
-        keyword = 'Token'
-        model = None
-    
-        def get_model(self):
-            if self.model is not None:
-                return self.model
-            from rest_framework.authtoken.models import Token
-            return Token
-    
-        """
-        사용자 지정 토큰 모델을 사용할 수 있지만 다음 속성이 있어야 합니다.
-        * key -- 토큰을 식별하는 문자열입니다
-        * 사용자 - 토큰이 속한 사용자
-        """
-    
-        def authenticate(self, request):
-            auth = get_authorization_header(request).split()
-    
-            if not auth or auth[0].lower() != self.keyword.lower().encode():
-                return None
-    
-            if len(auth) == 1:
-                msg = _('Invalid token header. No credentials provided.')
-                raise exceptions.AuthenticationFailed(msg)
-            elif len(auth) > 2:
-                msg = _('Invalid token header. Token string should not contain spaces.')
-                raise exceptions.AuthenticationFailed(msg)
-    
-            try:
-                token = auth[1].decode()
-            except UnicodeError:
-                msg = _('Invalid token header. Token string should not contain invalid characters.')
-                raise exceptions.AuthenticationFailed(msg)
-    
-            return self.authenticate_credentials(token)
-    
-        def authenticate_credentials(self, key):
-            model = self.get_model()
-            try:
-                token = model.objects.select_related('user').get(key=key)
-            except model.DoesNotExist:
-                raise exceptions.AuthenticationFailed(_('Invalid token.'))
-    
-            if not token.user.is_active:
-                raise exceptions.AuthenticationFailed(_('User inactive or deleted.'))
-    
-            return (token.user, token)
-    
-        def authenticate_header(self, request):
-            return self.keyword
-    
-    ...생략...
-    ```
-    
-    </div>
-    </details>
+<details>
+<summary>참고한 django-rest-framework 소스 코드 authentication.TokenAuthentication 부분</summary>
+<div markdown="1">
+
+```python
+...생략...
+
+class TokenAuthentication(BaseAuthentication):
+    """
+    간단한 토큰 기반 인증입니다.
+    클라이언트는 "Authorization"에서 토큰 키를 전달하여 인증해야 합니다
+    문자열 "Token"으로 앞에 붙는 HTTP 헤더입니다. 
+    예를 들어: Authorization: Token {token}
+    """
+
+    keyword = 'Token'
+    model = None
+
+    def get_model(self):
+        if self.model is not None:
+            return self.model
+        from rest_framework.authtoken.models import Token
+        return Token
+
+    """
+    사용자 지정 토큰 모델을 사용할 수 있지만 다음 속성이 있어야 합니다.
+    * key -- 토큰을 식별하는 문자열입니다
+    * 사용자 - 토큰이 속한 사용자
+    """
+
+    def authenticate(self, request):
+        auth = get_authorization_header(request).split()
+
+        if not auth or auth[0].lower() != self.keyword.lower().encode():
+            return None
+
+        if len(auth) == 1:
+            msg = _('Invalid token header. No credentials provided.')
+            raise exceptions.AuthenticationFailed(msg)
+        elif len(auth) > 2:
+            msg = _('Invalid token header. Token string should not contain spaces.')
+            raise exceptions.AuthenticationFailed(msg)
+
+        try:
+            token = auth[1].decode()
+        except UnicodeError:
+            msg = _('Invalid token header. Token string should not contain invalid characters.')
+            raise exceptions.AuthenticationFailed(msg)
+
+        return self.authenticate_credentials(token)
+
+    def authenticate_credentials(self, key):
+        model = self.get_model()
+        try:
+            token = model.objects.select_related('user').get(key=key)
+        except model.DoesNotExist:
+            raise exceptions.AuthenticationFailed(_('Invalid token.'))
+
+        if not token.user.is_active:
+            raise exceptions.AuthenticationFailed(_('User inactive or deleted.'))
+
+        return (token.user, token)
+
+    def authenticate_header(self, request):
+        return self.keyword
+
+...생략...
+```
+
+</div>
+</details>
 <br>
 
 ### 2023-11-24
@@ -318,8 +347,8 @@
 ### 2023-11-25
 ### 8.3. register(회원가입)에서 닉네임 추가 후 회원가입 시 발생한 에러😩
 - 에러
-  - `FieldError at /accounts/register/, Cannot resolve keyword 'nickname' into field.<br>
-    Choices are: auth_token, carduser, date_joined, email, first_name, groups, id, is_active, is_staff, is_superuser,<br>
+  - `FieldError at /accounts/register/, Cannot resolve keyword 'nickname' into field.
+    Choices are: auth_token, carduser, date_joined, email, first_name, groups, id, is_active, is_staff, is_superuser,
     last_login, last_name, logentry, memorycard, password, user_permissions, username`
 - 원인
   - 기본 `User Model`에 `nickname field`가 없어서 발생한 오류
