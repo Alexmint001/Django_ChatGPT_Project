@@ -23,7 +23,7 @@
 - 챗봇에게 궁금한 내용을 물어보고 답변을 받을 수 있습니다.
 <br>
 
-## 2. 개발 환경
+## 2. 개발 환경 및 배포 Link 
 
 ### 2.1 개발 환경
 #### [FrontEnd]  
@@ -46,6 +46,12 @@
     <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/>
 </div>
 <br>
+
+### 2.2 배포 Link
+[Cardify](http://13.209.212.147/accounts/login.html)
+> 테스트용 ID 및 PW  
+> ID : guest1  
+> PW : dhwjdqo1!  
 
 ## 3. 프로젝트 구조와 개발 일정
 
@@ -106,29 +112,33 @@
  ┣ 📜requirements.txt  
  ┗ 📜secrets.json  
 
-### 3.2 URL 구조
+<br>
+
+### 3.2 API 명세서
 - accounts
 
-|App|URL|Views Function|HTML File Name|Note|
-|:-------|:-----------|:-------------|:---------------------|:------------|
-|accounts|'register/'|userregister|register.html|회원가입 화면 - POST 요청|
-|accounts|'login/'|userlogin|login.html|로그인 화면 - POST 요청|
-|accounts|'profile/'|userprofile|profile.html|프로필 화면 - GET 요청|
+|App|URL|HTTP Method|HTML File Name|Note|Login|Author|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|accounts|register/|POST|register.html|회원가입 화면|||
+|accounts|login/|POST|login.html|로그인 화면|||
+|accounts|profile/|GET|profile.html|프로필 화면|✔️||
 
 - memorycards
 
-|App|URL|Views Function|HTML File Name|Note|
-|:-------|:-----------|:-------------|:---------------------|:------------|
-|memorycards|'/'|MemoryCardViewSet|memory_card_list.html|글목록 화면 - GET 요청|
-|memorycards|'/'|MemoryCardViewSet|memory_card_list_write.html|글목록 화면 - POST 요청|
-|memorycards|'${id}/'|MemoryCardViewSet|memory_card_content.html|상세글 화면 - GET 요청|
-|memorycards|'${id}/'|MemoryCardViewSet|memory_card_content_edit.html|글 수정 화면 - PUT 요청|
+|App|URL|HTTP Method|HTML File Name|Note|Login|Author|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|memorycards|/|GET|memory_card_list.html|글목록 화면|✔️||
+|memorycards|/|POST|memory_card_list_write.html|글목록 화면|✔️||
+|memorycards|<int:pk>/|GET|memory_card_content.html|상세글 화면|✔️||
+|memorycards|<int:pk>/|PUT|memory_card_content_edit.html|글 수정 화면|✔️|✔️|
+|memorycards|<int:pk>/|DELETE|memory_card_content.html|글 삭제|✔️|✔️|
 
 - chatbot
 
-|App|URL|Views Function|HTML File Name|Note|
-|:-------|:-----------|:-------------|:---------------------|:------------|
-|chatbot|'/'|ChatBotView|chat.html|챗봇 화면 - GET 요청 & POST 요청| 
+|App|URL|HTTP Method|HTML File Name|Note|Login|Author|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|chatbot|/|GET|chat.html|이전 채팅 내용 확인|✔️|✔️|
+|chatbot|/|POST|chat.html|챗봇에게 답변 요청|✔️|✔️|
 
 ### 3.3 개발 일정
 
@@ -357,3 +367,4 @@ class TokenAuthentication(BaseAuthentication):
 - 아쉬운 점
   - 이미 어느 정도 프로젝트가 진행이 된 상태라 `User Model` 커스텀 하기에는 부담이 되어 이 부분은 작업하지 못함.<br>
 - 소스코드 링크 : [accounts/Models.py Link](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/accounts/models.py#L4C1-L15C47)
+
