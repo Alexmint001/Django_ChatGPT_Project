@@ -1,13 +1,13 @@
 # Django_ChatGPT_Project_BE
 # Cardify
-- 인증된 사용자가 각 주제 별로 암기하려는 항목을 입력하고 궁금한 내용은 챗봇에게 물어보면서 공부하는 서비스
+- 암기 카드를 작성하고 챗봇에게 물어보면서 공부하는 서비스
 
 ## 목차
 
 [1. 목표와 기능](#1-목표와-기능)<br>
-[2. 개발 환경](#2-개발-환경)<br>
+[2. 개발 환경 및 배포 Link](#2-개발-환경-및-배포-Link)<br>
 [3. 프로젝트 구조와 개발 일정](#3-프로젝트-구조와-개발-일정)<br>
-[4. 요구사항 시각화 및 데이터베이스 모델링(ERD)](#4-요구사항-시각화-및-데이터베이스-모델링(ERD))<br>
+[4. 요구사항 시각화, 데이터베이스 모델링(ERD), 배포 아키텍처 구성도](#4-요구사항-시각화,-데이터베이스-모델링(ERD),-배포-아키텍처-구성도)<br>
 [5. UI](#5-UI)<br>
 [6. 메인 기능](#6-메인-기능)<br>
 [7. 추가 기능](#7-추가-기능)<br>
@@ -16,7 +16,7 @@
 
 ## 1. 목표와 기능
 ### 1.1 목표
-- 각 주제 별로 암기하려는 항목을 입력하고 궁금한 내용은 챗봇에게 물어보면서 공부하는 서비스
+- 각 주제 별로 암기카드를 입력하고 궁금한 내용은 챗봇에게 물어보면서 공부하는 서비스
 ### 1.2 기능
 - 인증된 사용자는 암기 항목을 작성할 수 있습니다.
 - 암기 항목의 수정 및 삭제는 작성자만이 가능합니다.
@@ -49,9 +49,13 @@
 
 ### 2.2 배포 Link
 [Cardify](http://13.209.212.147/accounts/login.html)
-> 테스트용 ID 및 PW  
-> ID : guest1  
-> PW : dhwjdqo1!  
+<details>
+<summary>테스트용 ID 및 PW</summary>
+<div markdown="1">
+ID : guest1<br>
+PW : dhwjdqo1!  
+</div>
+</details>
 
 ## 3. 프로젝트 구조와 개발 일정
 
@@ -128,7 +132,7 @@
 |App|URL|HTTP Method|HTML File Name|Note|Login|Author|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |memorycards|/|GET|memory_card_list.html|글목록 화면|✔️||
-|memorycards|/|POST|memory_card_list_write.html|글목록 화면|✔️||
+|memorycards|/|POST|memory_card_list_write.html|글 작성성|✔️||
 |memorycards|< int:pk >/|GET|memory_card_content.html|상세글 화면|✔️||
 |memorycards|< int:pk >/|PUT|memory_card_content_edit.html|글 수정 화면|✔️|✔️|
 |memorycards|< int:pk >/|DELETE|memory_card_content.html|글 삭제|✔️|✔️|
@@ -273,7 +277,7 @@
     - 토큰이 신뢰할 수 있는 위치랑 매치 되지 않아서 생기는 에러
 - 해결방법
     - `settings.py`에 기본 인증 클래스를 `TokenAuthentication`으로 설정하였다
-- 소스코드 링크 : [Cardify/Settings.py Link](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/Cardify/settings.py#L149C1-L154C2)
+- 소스코드 링크 : [Cardify/Settings.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/Cardify/settings.py#L149C1-L154C2)
 <details>
 <summary>참고한 django-rest-framework 소스 코드 authentication.TokenAuthentication 부분</summary>
 <div markdown="1">
@@ -355,7 +359,7 @@ class TokenAuthentication(BaseAuthentication):
     - author를 입력받아야 해당 글의 author를 지정하는데 클라이언트로 입력 받지 못하여 생긴 에러
 - 해결방법
     - `serializers.py`에 `author`를 `ReadOnlyField`로 설정하였고, `views.py`에 `CreateModelMixin`의 `perform_create`를 오버라이딩 하여 기본적으로 `request.user`를 통해 자동적으로 설정되고. 이를 통해 `author`는 클라이언트로 부터 입력을 받지 않고, 서버에서만 수정이 가능하도록 하였다.
-- 소스코드 링크 : [memorycards/Serializers.py Link](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/serializers.py#L4C1-L19C21) / [memorycards/Views.py Link](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/views.py#L8C1-L29C5)
+- 소스코드 링크 : [memorycards/Serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/serializers.py#L4C1-L19C21) / [memorycards/Views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/views.py#L8C1-L29C5)
 
 ### 2023-11-25
 ### 8.3. register(회원가입)에서 닉네임 추가 후 회원가입 시 발생한 에러😩
@@ -369,5 +373,5 @@ class TokenAuthentication(BaseAuthentication):
   - `User`의 `AbstractUser`를 상속받아 커스텀 유저를 만들어서 해결해야함. `User Model`을 건드려야 하므로 초기에 진행했어야 함.
 - 아쉬운 점
   - 이미 어느 정도 프로젝트가 진행이 된 상태라 `User Model` 커스텀 하기에는 부담이 되어 이 부분은 작업하지 못함.<br>
-- 소스코드 링크 : [accounts/Models.py Link](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/accounts/models.py#L4C1-L15C47)
+- 소스코드 링크 : [accounts/Models.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/accounts/models.py#L4C1-L15C47)
 
