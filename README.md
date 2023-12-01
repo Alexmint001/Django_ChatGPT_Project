@@ -129,9 +129,9 @@
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |memorycards|/|GET|memory_card_list.html|글목록 화면|✔️||
 |memorycards|/|POST|memory_card_list_write.html|글목록 화면|✔️||
-|memorycards|<int:pk>/|GET|memory_card_content.html|상세글 화면|✔️||
-|memorycards|<int:pk>/|PUT|memory_card_content_edit.html|글 수정 화면|✔️|✔️|
-|memorycards|<int:pk>/|DELETE|memory_card_content.html|글 삭제|✔️|✔️|
+|memorycards|< int:pk >/|GET|memory_card_content.html|상세글 화면|✔️||
+|memorycards|< int:pk >/|PUT|memory_card_content_edit.html|글 수정 화면|✔️|✔️|
+|memorycards|< int:pk >/|DELETE|memory_card_content.html|글 삭제|✔️|✔️|
 
 - chatbot
 
@@ -147,9 +147,7 @@
 - 타임라인 -<br>
 <br>
 
-<img width="800" alt="WBS" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/f3ba8b42-8ffd-43d5-90d3-7385e5396cff"><br>
-<img width="800" alt="WBS" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/61f956b3-5d98-4232-99b8-9bed5712bf37"><br>
-<img width="800" alt="WBS" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/f1510bb6-1b7b-4916-87ec-3ff1da2cd775"><br>
+<img width="800" alt="WBS" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/ae5e30d7-040f-4d6c-bcf4-92744cb82ac9"><br>
 [WBS 스프레드시트](https://docs.google.com/spreadsheets/d/e/2PACX-1vQbfMrsn7gFsPs00l8CcxiGUMpIx7_rD-jf7RDY5ekv6mSTFPnxom0IQa6QphAAhllef_RJMnMvh0Yq/pubhtml)
 </div>
 <br>
@@ -168,7 +166,7 @@
     - 데이터베이스 모델링(ERD 설계) - <br>
 <br>
 
-<img width="800" alt="architecture" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/1e989e6a-2566-488e-a213-ba35ad8a708b"><br>
+<img width="800" alt="architecture" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/64e96936-c698-4760-90d4-1f6ce21182d3"><br>
     - 배포 아키텍처 구성도 - <br>
 <br>
 </div>
@@ -229,13 +227,13 @@
 ### 7.1. DRF CRUD는 Jason Web Token 방식으로 적용
 ### 7.1.1. CREATE, READ - 인증된 사용자 (ACCESS TOKEN)
 - memorycards
-    - `Settings.py`의 `REST_FRAMEWORK` 의 `DEFAULT_AUTHENTICATION_CLASSES` 설정을 `rest_framework_simplejwt.authentication.JWTAuthentication`으로 설정하여 JWT 사용
+    - `Settings.py`의 `REST_FRAMEWORK` 의 `DEFAULT_AUTHENTICATION_CLASSES` 설정을 `JWTAuthentication`으로 설정하여 JWT 사용
     - `ModelViewSet`을 상속받는 `MemoryCardViewSet`의 `permission_classes`를 통해 인증된 사용자를 검증할 수 있습니다.
     - 소스 코드 링크 : [Cardify/settings.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/Cardify/settings.py#L150C1-L154C2) / [memorycards/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/memorycards/views.py#L8C1-L27C11)
 
 ### 7.1.2. UPDATE, DELETE - 인증된 사용자 (ACCESS TOKEN) + 작성자 본인 (author field)
 - memorycards
-    - `Settings.py`의 `REST_FRAMEWORK` 의 `DEFAULT_AUTHENTICATION_CLASSES` 설정을 `rest_framework_simplejwt.authentication.JWTAuthentication`으로 설정하여 JWT 사용
+    - `Settings.py`의 `REST_FRAMEWORK` 의 `DEFAULT_AUTHENTICATION_CLASSES` 설정을 `JWTAuthentication`으로 설정하여 JWT 사용
     - `ModelViewSet`을 상속받는 `MemoryCardViewSet`의 `permission_classes`를 통해 인증된 사용자를 검증할 수 있습니다.
     - `serializers.py`에서 `get_is_author` 메서드를 오버라이딩 하여 작성자 본인일 경우 True를 리턴합니다.
     - `permissions.py` 에서 GET 요청은 인증 여부와 상관없이 항상 True를 리턴하되 그 외 요청(PUT, DELETE)에 대해서는 작성자에게만 True를 리턴하도록 `has_object_permission` 메서드 오버라이딩
