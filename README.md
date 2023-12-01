@@ -191,51 +191,33 @@ PW : dhwjdqo1!
 |<img width="450px" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/d384c318-fb15-4ec6-8962-2bf9c024ea8d"><br><div align="center">07_작성자인 사용자가 보는 페이지</div>|<img width="450px" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/a6156475-a8e2-4d61-9a1f-741fa77da912"><br><div align="center">08_글 수정 페이지</div>|
 |<img width="450px" alt="image" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/b75b0da3-c598-43ac-bd30-038684f36afe"><br><div align="center">09_챗봇 페이지</div>||
 
-### 5.3. 기능 별 GIF
+### 5.3. 메인 기능
 
 <div align="center">
     
 |||
 |-|-|
-|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/5d677e35-17bf-4104-becf-5d7ef460842a">|<div align="center">회원가입 기능</div>|
-|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/8abcd43a-81aa-4f35-8673-02e10798e86c">|<div align="center">로그인 기능</div>|
-|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/27d1858e-4110-44e5-adc0-068a39daa169">|<div align="center">프로필 기능</div>|
-|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/98b2578f-919c-4895-adea-d3f2e7c11f8a">|<div align="center">로그아웃 기능</div>|
-|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/02282032-7522-4fa2-89a2-2704639a2ae7">|<div align="center">글 쓰기 및 글 읽기 기능 / CREATE, GET</div>|
-|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/10a991de-a814-4e74-a5fa-87d3423a3f0f">|<div align="center">글 수정 및 글 삭제 / PUT, DELETE</div>|
-|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/124f7d0c-99c5-4156-a52c-fcaa46b6475b">|<div align="center">챗봇 요청 및 답변 / POST, GET</div>|
-|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/8f454c96-39ac-4270-af24-499fde234831">|<div align="center">챗봇 요청 횟수 초과</div>|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/5d677e35-17bf-4104-becf-5d7ef460842a">|**회원가입 기능**<br><br>`CreateAPIView`를 상속받는 `RegisterView`를 작성하여 회원가입 구현<br><br>**소스 코드 링크**<br>[accounts/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/accounts/views.py#L11C1-L75C32)<br>[accounts/serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/accounts/serializers.py#L7C1-L66C51)|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/8abcd43a-81aa-4f35-8673-02e10798e86c">|**로그인 기능**<br><br>`GenericAPIView`를 상속받는 `LoginView`를 작성하여 로그인 구현<br><br>**소스 코드 링크**<br>[accounts/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/accounts/views.py#L11C1-L75C32)<br>[accounts/serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/accounts/serializers.py#L7C1-L66C51)|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/27d1858e-4110-44e5-adc0-068a39daa169">|**프로필 기능**<br><br>`GenericAPIView`를 상속받는 `ProfileView`를 작성하여 토큰 확인 후 프로필 화면에 출력할 데이터를 받아 프로필 화면 구현<br><br>**소스 코드 링크**<br>[accounts/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/76bd08cb3b4e286fed798931d694ca6c00b8853d/accounts/views.py#L77C1-L112C36)|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/98b2578f-919c-4895-adea-d3f2e7c11f8a">|**로그아웃 기능**<br><br>로그아웃 버튼을 클릭 할 경우 로컬저장소의 토큰을 삭제하는 것으로 로그아웃을 구현<br><br>**소스 코드 링크**<br>[Django_ChatGPT_Project_FE/accounts/profile.html](https://github.com/Alexmint001/Django_ChatGPT_Project_FE/blob/e95798b62581d9c8eea88dab27876f691c514974/accounts/profile.html#L84C13-L92C15)|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/02282032-7522-4fa2-89a2-2704639a2ae7">|**글 쓰기 및 글 읽기 기능**<br><br>`ModelViewSet`을 상속받는 `MemoryCardViewSet`을 작성하여 CRUD 구현<br><br>로그인한 사용자만 READ(GET), CREATE(POST) 가능하도록 `permission_classes`에 `IsAuthenticated` 설정<br><br>**소스 코드 링크**<br>[memorycards/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/views.py#L8C1-L28C23)<br>[memorycards/permissions.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/permissions.py#L4C1-L21C5)<br>[memorycards/serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/serializers.py#L4C1-L19C21)|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/10a991de-a814-4e74-a5fa-87d3423a3f0f">|**글 수정 및 글 삭제**<br><br>`ModelViewSet`을 상속받는 `MemoryCardViewSet`을 작성하여 CRUD 구현<br>작성자 본인일 경우에만 UPDATE(PUT), DELETE(DELETE) 가능하도록 `permissions.py`에 `IsAuthorOrReadOnly` 작성 후 설정<br><br>**소스 코드 링크**<br>[memorycards/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/views.py#L8C1-L28C23)<br>[memorycards/permissions.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/permissions.py#L4C1-L21C5)<br>[memorycards/serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/serializers.py#L4C1-L19C21)|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/124f7d0c-99c5-4156-a52c-fcaa46b6475b">|**챗봇 요청 및 답변**<br><br>`APIView`를 상속받는 `ChatBotView`를 작성하여 챗봇 구현<br><br>**소스 코드 링크**<br>[chatbot/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/chatbot/views.py#L17C1-L60C64)|
+|<img width="450px" alt="" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/8f454c96-39ac-4270-af24-499fde234831">|**챗봇 요청 횟수 초과**<br><br>`throttles.py`에서 `UserRateThrottle`을 상속받는 `ChatBotThrottle`에서 `rate`를 `5/day`로 설정 후 `allow_request` 메서드를 오버라이딩<br><br>`views.py`에서 `throttles_classes`를 `ChatBotThrottle`로 설정<br><br>**`throttles`를 따로 작성한 이유**<br>`settings.py`에서 `DEFAULT_THROTTLE_RATES`로 설정을 하면 모든 요청에 횟수 제한이 생김(get요청이 포함됨)<br><br>**소스 코드 링크**<br>[chatbot/throttles.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/chatbot/throttles.py#L3C1-L13C5)<br>[chatbot/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/chatbot/views.py#L25C4-L25C41)|
 
 </div>
 <br>
 
-## 6. 메인 기능
-### 6.1. DRF 글 작성/읽기/수정/삭제 기능 구현
-- mermorycards
-    - `ModelViewSet`을 상속받는 `MemoryCardViewSet`을 작성하여 CRUD 구현
-    - 로그인한 사용자만 READ(GET), CREATE(POST) 가능하도록 `permission_classes`에 `IsAuthenticated` 설정
-    - 작성자 본인일 경우에만 UPDATE(PUT), DELETE(DELETE) 가능하도록 `permissions.py`에 `IsAuthorOrReadOnly` 작성 후 설정
-    - 소스 코드 링크 : [memorycards/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/views.py#L8C1-L28C23) / [memorycards/permissions.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/permissions.py#L4C1-L21C5) / [memorycards/serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/serializers.py#L4C1-L19C21)
-### 6.2. DRF 로그인/회원가입 기능
-- accounts
-    - `GenericAPIView`를 상속받는 `LoginView`를 작성하여 로그인 구현 - POST
-    - `CreateAPIView`를 상속받는 `RegisterView`를 작성하여 회원가입 구현 - POST
-    - 소스 코드 링크 : [accounts/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/accounts/views.py#L11C1-L75C32) / [accounts/serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/accounts/serializers.py#L7C1-L66C51)
-### 6.3. OpenAI API 연결하여 챗봇 구현
-- chatbot
-    - `APIView`를 상속받는 `ChatBotView`를 작성하여 챗봇 구현 - GET / POST
-    - 소스 코드 링크 : [chatbot/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/chatbot/views.py#L17C1-L60C64)
-<br>
-
-## 7. 추가 기능
-### 7.1. DRF CRUD는 Jason Web Token 방식으로 적용
-### 7.1.1. CREATE, READ - 인증된 사용자 (ACCESS TOKEN)
+## 6. 추가 기능
+### 6.1. DRF CRUD는 Jason Web Token 방식으로 적용
+### 6.1.1. CREATE, READ - 인증된 사용자 (ACCESS TOKEN)
 - memorycards
     - `Settings.py`의 `REST_FRAMEWORK` 의 `DEFAULT_AUTHENTICATION_CLASSES` 설정을 `JWTAuthentication`으로 설정하여 JWT 사용
     - `ModelViewSet`을 상속받는 `MemoryCardViewSet`의 `permission_classes`를 통해 인증된 사용자를 검증할 수 있습니다.
     - 소스 코드 링크 : [Cardify/settings.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/Cardify/settings.py#L150C1-L154C2) / [memorycards/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/memorycards/views.py#L8C1-L27C11)
 
-### 7.1.2. UPDATE, DELETE - 인증된 사용자 (ACCESS TOKEN) + 작성자 본인 (author field)
+### 6.1.2. UPDATE, DELETE - 인증된 사용자 (ACCESS TOKEN) + 작성자 본인 (author field)
 - memorycards
     - `Settings.py`의 `REST_FRAMEWORK` 의 `DEFAULT_AUTHENTICATION_CLASSES` 설정을 `JWTAuthentication`으로 설정하여 JWT 사용
     - `ModelViewSet`을 상속받는 `MemoryCardViewSet`의 `permission_classes`를 통해 인증된 사용자를 검증할 수 있습니다.
@@ -243,34 +225,29 @@ PW : dhwjdqo1!
     - `permissions.py` 에서 GET 요청은 인증 여부와 상관없이 항상 True를 리턴하되 그 외 요청(PUT, DELETE)에 대해서는 작성자에게만 True를 리턴하도록 `has_object_permission` 메서드 오버라이딩
     - 소스 코드 링크 : [memorycards/serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/memorycards/serializers.py#L15C1-L19C21) / [memorycards/permissions.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/memorycards/permissions.py#L13C2-L20C42)
 
-### 7.2. DRF 로그인, 회원가입 시 Jason Web Token 발급
-### 7.2.1. DRF 로그인
+### 6.2. DRF 로그인, 회원가입 시 Jason Web Token 발급
+### 6.2.1. DRF 로그인
 - accounts
     - 로그인은 POST 요청이므로 `GenericAPIView`를 상속받는 `LoginView`를 작성하고, post 메서드를 오버라이딩, 사용자 인증 후 access token과 refresh token을 리턴
     - 소스 코드 링크 : [accounts/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/accounts/views.py#L43C1-L75C32)
-### 7.2.2. DRF 회원가입
+### 6.2.2. DRF 회원가입
 - accounts
     - 회원가입은 POST 요청이므로 `CreateAPIView`를 상속받는 `RegisterView`를 작성하고, post 메서드를 오버라이딩, 회원 가입 후 access token과 refresh token을 리턴
     - 회원가입 시 username과 email은 필수로 입력이 필요하고, 중복이 불가능 하다라는 설정과 password1과 password2는 같아야하고 필수로 입력이 필요하다는 설정은 `serializers.py`에서 `required`와 `validators`를 설정하였습니다.
     - 소스 코드 링크 : [accounts/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/accounts/views.py#L11C1-L41C38) / [accounts/serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/accounts/serializers.py#L7C1-L35C6)
 
-### 7.3. 챗봇 추가 기능
-### 7.3.1. 이전에 챗봇과 채팅한 내용은 본인만 확인 가능 - 채팅 내용 데이터 베이스 저장 + 채팅 사용자 본인(user field)
+### 6.3. 챗봇 추가 기능
+### 6.3.1. 이전에 챗봇과 채팅한 내용은 본인만 확인 가능 - 채팅 내용 데이터 베이스 저장 + 채팅 사용자 본인(user field)
 - chatbot
     - 채팅 내용 본인만 확인 기능은 `APIView`를 상속받는 `ChatBotView`에서 `get_queryset` 메서드에서 요청한 사용자를 확인하고, 해당 사용자의 채팅을 가져오는 get 메서드를 오버라이딩하여 구현하였습니다.
     - 채팅 내용 DB 저장 기능은 post메서드를 오버라이딩하여 사용자를 지정한 후 저장하도록 구현하였습니다.
     - 소스 코드 링크 : [chatbot/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/chatbot/views.py#L28C5-L58C61)
-### 7.3.2. 챗봇에 요청할 수 있는 횟수는 1일 5회로 제한 - UserRateThrottle을 상속받아 ChatBotThrottle 구현
-- chatbot
-    - 요청 횟수 제한 기능은 `throttles.py`에서 `UserRateThrottle`을 상속받는 `ChatBotThrottle`에서 `rate`를 `5/day`로 설정 후 `allow_request` 메서드를 오버라이딩하여 post요청에 한해서만 적용하도록 설정하였습니다.
-    - `views.py`에서 `throttles_classes`를 작성한 `ChatBotThrottle`로 설정
-    - `throttles`를 따로 작성한 이유 : `settings.py`에서 `DEFAULT_THROTTLE_RATES`로 설정을 하면 모든 요청에 횟수 제한을 두게 되므로 단순히 이전 내용을 읽어오는 get요청도 포함되기 때문.
-    - 소스 코드 링크 : [chatbot/throttles.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/chatbot/throttles.py#L3C1-L13C5) / [chatbot/views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/8ee148dcea402a4b8008dc139ff86f729bafca60/chatbot/views.py#L25C4-L25C41)
+    
 <br>
 
-## 8. 개발하며 경험한 오류와 해결방법
+## 7. 개발하며 경험한 오류와 해결방법
 ### 2023-11-23
-### 8.1. 로그인 시 BackEnd 서버와 FrontEnd서버 연결 에러 (DRF 기본 토큰 방식)😲
+### 7.1. 로그인 시 BackEnd 서버와 FrontEnd서버 연결 에러 (DRF 기본 토큰 방식)😲
 - 에러
     - `HTTP 403 Forbidden, CSRF Failed: Origin checking failed - http://127.0.0.1:5500 does not match any trusted origins.`
 - 원인
@@ -352,7 +329,7 @@ class TokenAuthentication(BaseAuthentication):
 <br>
 
 ### 2023-11-24
-### 8.2. 클라이언트의 작성 페이지에서 작성 요청, 자격이 없다, 400 에러가 발생😲
+### 7.2. 클라이언트의 작성 페이지에서 작성 요청, 자격이 없다, 400 에러가 발생😲
 - 에러
     - 클라이언트의 작성 페이지에서 제목과 내용을 작성 후 로컬저장소의 토큰을 getitem으로 담아서 요청, 자격이 없다, 400 에러가 발생
 - 원인
@@ -362,7 +339,7 @@ class TokenAuthentication(BaseAuthentication):
 - 소스코드 링크 : [memorycards/Serializers.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/serializers.py#L4C1-L19C21) / [memorycards/Views.py](https://github.com/Alexmint001/Django_ChatGPT_Project_BE/blob/cee5d7a4c500f721dd74a1658402345752514826/memorycards/views.py#L8C1-L29C5)
 
 ### 2023-11-25
-### 8.3. register(회원가입)에서 닉네임 추가 후 회원가입 시 발생한 에러😩
+### 7.3. register(회원가입)에서 닉네임 추가 후 회원가입 시 발생한 에러😩
 - 에러
   - `FieldError at /accounts/register/, Cannot resolve keyword 'nickname' into field.
     Choices are: auth_token, carduser, date_joined, email, first_name, groups, id, is_active, is_staff, is_superuser,
