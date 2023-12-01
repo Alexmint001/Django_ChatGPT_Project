@@ -170,7 +170,7 @@ PW : dhwjdqo1!
     - 데이터베이스 모델링(ERD 설계) - <br>
 <br>
 
-<img width="800" alt="architecture" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/64e96936-c698-4760-90d4-1f6ce21182d3"><br>
+<img width="800" alt="architecture" src="https://github.com/Alexmint001/Django_ChatGPT_Project_BE/assets/142385654/eb563c95-5ee1-40db-ab88-8c043ae4b0c4"><br>
     - 배포 아키텍처 구성도 - <br>
 <br>
 </div>
