@@ -47,8 +47,9 @@
 </div>
 <br>
 
-### 2.2 배포 Link
-[Cardify](http://13.209.212.147/accounts/login.html)
+### ~~2.2 배포 Link~~<br>
+**현재는 서버가 중지되어 있습니다.**<br>
+~~[Cardify](http://13.209.212.147/accounts/login.html)~~
 <details>
 <summary>테스트용 ID 및 PW</summary>
 <div markdown="1">
